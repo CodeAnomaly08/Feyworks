@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <haxedef name='openfl_enable_handle_error' />
+  <haxedef name="HXCPP_CHECK_POINTER" />
+
+  <haxedef name="FEY_PATHS" unless="FEY_NO_PATHS" />
+  <haxedef name="FEY_DEFAULT_PATHS" if="FEY_PATHS" unless="FEY_NO_DEFAULT_PATHS" />
+  <haxedef name="FEY_CONTROLS" unless="FEY_NO_CONTROLS" />
+
+  <haxedef name="FEY_FILESELECT" unless="FEY_NO_FILESELECT" />
+  
+  <section if="sys">
+    <haxedef name="FEY_MODDING" unless="FEY_NO_MODDING" />
+    
+    <haxedef name="FEY_FILESYS" unless="FEY_NO_FILESYS" />
+
+    <haxedef name="FEY_ACHIEVEMENTS" unless="FEY_NO_ACHIEVEMENTS"/>
+    <haxedef name="FEY_SAVE" unless="FEY_NO_SAVE" />
+    <section if="FEY_SAVE">
+      <haxedef name="FEY_SAVESLOTS" unless="FEY_NO_SAVESLOTS" />
+      <haxedef name="FEY_SAVEGLOBAL" unless="FEY_NO_SAVEGLOBAL" />
+    </section>
+
+    <section unless="FEY_NO_SCRIPTING">
+      <haxedef name="FEY_SCRIPTING" />
+      <section unless="FEY_NO_HSCRIPT">
+        <haxelib name="hscript-iris" />
+        <haxedef name="FEY_HSCRIPT"/>
+        <haxedef name="FEY_HSCRIPT_ONLY" if="FEY_NO_LUA" />
+      </section>
+      <section unless="FEY_NO_LUA">
+        <haxelib name="lscript" />
+        <haxedef name="FEY_LUA"/>
+        <haxedef name="FEY_LUA_ONLY" if="FEY_NO_HSCRIPT" />
+      </section>
+      <haxedef name="FEY_SINGLE_SCRIPT_LANGUAGE" if="FEY_LUA_ONLY"/>
+      <haxedef name="FEY_SINGLE_SCRIPT_LANGUAGE" if="FEY_HSCRIPT_ONLY"/>
+    </section>
+  </section>
+</project>

@@ -1,0 +1,14 @@
+{
+  "name": "Feyworks",
+  "license": "MIT",
+  "tags": ["flixel"],
+  "description": "",
+  "version": "0.8.0",
+  "classPath": "src",
+  "releasenote": "Initial release, everything is working correctly.",
+  "contributors": ["CodeAnomaly08"],
+  "dependencies": {
+    "flixel":"",
+    "systools":""
+  }
+}
