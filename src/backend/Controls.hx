@@ -17,10 +17,11 @@ private abstract InputListChecker(FlxKeyList) {
 	@:from static inline function fromFlxKeyList(list:FlxKeyList)
 		return new InputListChecker(list);
 
+	private inline function check(bleh:Int)
+		return @:privateAccess this.check(bleh);
+
 	@:op([]) function read(k:String, ?pos:PosInfos) {
 		var i = k.toUpperCase();
-		inline function check(bleh:Int)
-			return @:privateAccess this.check(bleh);
 
 		var key = FlxKey.fromString(i);
 		if (key != NONE)
@@ -59,6 +60,8 @@ class Controls {
 		pressed = FlxG.keys.pressed;
 		justPressed = FlxG.keys.justPressed;
 		justReleased = FlxG.keys.justReleased;
+
+    FlxG.console.registerClass(Controls);
 	}
 
 	overload public static inline extern function setBind(name:String, key:String, ?pos:PosInfos) {

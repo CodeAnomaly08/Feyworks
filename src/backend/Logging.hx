@@ -101,6 +101,7 @@ class Logging {
 
 	@:allow(Feyworks)
 	static function init() {
+    FlxG.console.registerClass(Logging);
 		Feyworks.overlayGroup.add(loggingGroup);
 	}
 
