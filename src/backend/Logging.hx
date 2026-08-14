@@ -51,6 +51,10 @@ private class FeyLogMessage extends FlxContainer {
 		text = new FlxText(0, 0, title.textField.textWidth * 2, message, 12);
 		body = new FlxSprite().makeGraphic(Std.int(text.width) + 60, Std.int(text.textField.textHeight) + 50, color);
 		flair = new FlxSprite().makeGraphic(10, Std.int(body.height), detail);
+    title.ignoreDrawDebug = true;
+    text.ignoreDrawDebug = true;
+    flair.ignoreDrawDebug = true;
+    body.ignoreDrawDebug = true;
 		add(body);
 		add(flair);
 		add(title);

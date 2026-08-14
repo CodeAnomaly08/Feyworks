@@ -1,6 +1,6 @@
-#if FEY_CONTROLS
 package backend;
 
+import flixel.math.FlxPoint;
 import haxe.PosInfos;
 import flixel.FlxG;
 
@@ -29,7 +29,7 @@ private abstract InputListChecker(FlxKeyList) {
 		var bind = Controls.binds.get(i);
 		if (bind != null) {
 			for (key in bind)
-				if (check(FlxKey.fromString(key)))
+				if (read(key))
 					return true;
 			return false;
 		}
@@ -61,7 +61,7 @@ class Controls {
 		justPressed = FlxG.keys.justPressed;
 		justReleased = FlxG.keys.justReleased;
 
-    FlxG.console.registerClass(Controls);
+		FlxG.console.registerClass(Controls);
 	}
 
 	overload public static inline extern function setBind(name:String, key:String, ?pos:PosInfos) {
@@ -87,12 +87,21 @@ class Controls {
 		setBind('$name.POS', pos);
 	}
 
+	public static inline function getAnalog(x:String, y:String, ?point:FlxPoint = null,normalize:Bool=true) {
+		var p = point == null ? FlxPoint.weak(getAxis(x), getAxis(y)) : point.set(getAxis(x), getAxis(y));
+		if (normalize)
+			p.normalize();
+	}
+
 	public static inline function getAxis(name:String) {
 		return (pressed['$name.POS'] ? 1 : 0) - (pressed['$name.NEG'] ? 1 : 0);
+	}
+
+	public static inline function getJustPressedAxis(name:String) {
+		return (justPressed['$name.POS'] ? 1 : 0) - (justPressed['$name.NEG'] ? 1 : 0);
 	}
 	#else
 	@:allow(Feyworks)
 	static function init() {}
 	#end
 }
-#end

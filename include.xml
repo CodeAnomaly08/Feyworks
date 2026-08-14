@@ -7,8 +7,10 @@
   <haxedef name="FEY_DEFAULT_PATHS" if="FEY_PATHS" unless="FEY_NO_DEFAULT_PATHS" />
   <haxedef name="FEY_CONTROLS" unless="FEY_NO_CONTROLS" />
 
-  <haxedef name="FEY_FILESELECT" unless="FEY_NO_FILESELECT" />
-  
+  <section unless="FEY_NO_FILESELECT">
+    <haxedef name="FEY_FILESELECT"/>
+  </section>
+
   <section if="sys">
     <haxedef name="FEY_MODDING" unless="FEY_NO_MODDING" />
     
