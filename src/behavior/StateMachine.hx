@@ -9,7 +9,7 @@ private typedef State = {
 	var ?exit:Void->Void;
 }
 
-abstract class ParentedStatemachine<T:FlxBasic> extends StateMachine{
+abstract class ParentedStatemachine<T:FlxBasic> extends StateMachine {
   var parent:T;
   public function new(parent:T){
     this.parent = parent;
@@ -29,10 +29,7 @@ abstract class StateMachine {
 
 	public function new() {
 		registerState('', e -> null);
-		setup();
 	}
-
-	abstract function setup():Void;
 
 	function registerState(name:String, fun:Float->Void, ?onEnter:Void->Void, ?onExit:Void->Void) {
 		stateMap.set(name, {update: fun, enter: onEnter ?? () -> null, exit: onExit ?? () -> null});
@@ -57,8 +54,7 @@ abstract class StateMachine {
 		timers.remove(name);
 	}
 
-  @:allow(entities.Entity)
-	function update(e:Float) {
+	public function update(e:Float) {
 		var doneTimers = [];
 		for (tag => timer in timers) {
 			timer.time -= e;

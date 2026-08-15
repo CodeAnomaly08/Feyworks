@@ -91,6 +91,7 @@ class Controls {
 		var p = point == null ? FlxPoint.weak(getAxis(x), getAxis(y)) : point.set(getAxis(x), getAxis(y));
 		if (normalize)
 			p.normalize();
+    return p;
 	}
 
 	public static inline function getAxis(name:String) {
